@@ -1,7 +1,9 @@
 import bodyParser from "body-parser"
 import express, {Application} from "express"
-import bookRoute from "./handelers/book"
-import {BookStore} from "./models/book"
+
+import order from "./handelers/order"
+import product from "./handelers/product"
+import user from "./handelers/user"
 
 const app: Application = express()
 
@@ -14,8 +16,9 @@ app.get("/", function (req, res) {
   // BookStore.index();
   res.send("hello world")
 })
-
-bookRoute(app)
+app.use("/api", product)
+app.use("/api", user)
+app.use("/api", order)
 
 // app.get("/books", function (req, res) {
 //   try {
