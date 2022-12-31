@@ -19,12 +19,14 @@ class BookStore {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const conn = yield database_1.default.connect();
+                console.log("conn", conn);
                 const sql = "SELECT * FROM books";
                 const result = yield conn.query(sql);
                 conn.release();
                 return result.rows;
             }
             catch (err) {
+                console.log(err);
                 throw new Error(`Could not get books. Error: ${err}`);
             }
         });
@@ -75,3 +77,4 @@ class BookStore {
     }
 }
 exports.BookStore = BookStore;
+//# sourceMappingURL=book.js.map

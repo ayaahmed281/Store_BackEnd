@@ -9,7 +9,9 @@
     "lint": "eslint . --ext .ts",
     "jasmine": "jasmine",
     "test": "npm run build && npm run jasmine",
-    "format": "npx prettier --write . && npx prettier --check ."
+    "format": "npx prettier --write . && npx prettier --check .",
+    "create-db-dev": "db-migrate --config database.json db:create dev && db-migrate up -e dev",
+    "create-db-test": "db-migrate --config database.json db:create test"
   },
   "author": "",
   "license": "ISC",
@@ -26,8 +28,7 @@
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0",
-    "supertest": "^6.3.1"
-  },
+    "supertest": "^6.3.1"  },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.14",

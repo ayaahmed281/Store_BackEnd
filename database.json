@@ -6,4 +6,13 @@
       "user": "postgres",
       "password": "aya",
       "port":5434
-    }}
+    },
+    "test": {
+      "driver": "pg",
+      "host": "localhost",
+      "database": "test",
+      "user": "postgres",
+      "password": "aya",
+      "port":5434
+    }
+  }

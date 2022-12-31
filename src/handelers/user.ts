@@ -35,7 +35,7 @@ router.post("/users", async (req: Request, res: Response) => {
       email: req.body.email
     }
     await store.create(user).then((_res) => {
-      const token = jwt.sign({user}, process.env.TOKEN_SECRET?.toString())
+      const token = jwt.sign({user}, process.env.TOKEN_SECRET as string)
       res.json({
         statusCode: 200,
         message: "Done.",
@@ -81,7 +81,7 @@ router.post("/users/authentication", async (_req: Request, res: Response) => {
   try {
     const oldUser = await store.authenticateUser(password, email)
 
-    const token = jwt.sign({oldUser}, process?.env?.TOKEN_SECRET)
+    const token = jwt.sign({oldUser}, process?.env?.TOKEN_SECRET as string)
     if (oldUser) {
       res.status(200).json({
         status: "Authorized",

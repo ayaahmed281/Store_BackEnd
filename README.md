@@ -45,10 +45,105 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 
+### Dev mode
 
-BCRYPT_PASSWORD=my_password
-SALT_ROUNDS=10
+To install the app's dependencies and use the app in dev mode, run the following:
 
-TOKEN_SECRET=secret
-Footer
+`npm create-db-dev`
+
+`npm create-db-dev` runs a script that uses db-migrate to create a new database called `storefront` and runs the migrations to create the tables `db-migrate up`. This script assumes you have installed `postgres` on your local system and the server is running.
+
+To run the app in dev mode execute `yarn start`.
+
+## port number
+database is 5434
+server is 54242
+## env variables
+ host: "localhost",
+  port: 5434,
+  database: "dev",
+  user: "postgres",
+  password: "aya"
+# Package installation instructions.
+npm i
+# Database schema with column name and type.
+## API Endpoints
+#### Users
+
+- id
+- email
+- firstName
+- lastName
+- password
+
+- Index [token required] (GET `/api/users`)
+- Show [token required] (GET `/api/users/:id`)
+- Create (POST `/api/users`)
+- Update [token required] (PUT `/api/users/:id`)
+- Delete [token required] (DELETE `/api/users/:id`)
+
+
+CREATE TABLE users (id SERIAL PRIMARY KEY,
+                                      email VARCHAR(20) UNIQUE,
+                                                        firstName VARCHAR(20) NOT NULL,
+                                                                              lastName VARCHAR(20) NOT NULL,
+                                                                                                   password VARCHAR(255) NOT NULL);
+
+
+#### Products
+
+- pid
+- pName
+- price
+- category
+
+- Index (GET `/api/productsList` )
+- Show (GET `/api/productsList/:id`)
+- Create [token required] (POST `/api/productsList`)
+- Update [token required] (PUT `/api/productsList/:id`)
+- Delete [token required] (DELETE `/api/productsList/:id`)
+
+CREATE TABLE products (PID SERIAL PRIMARY KEY,
+                                          pName VARCHAR(20) not null,
+                                                            price integer not null,
+                                                                          category VARCHAR(20));
+
+#### Orders
+
+- id
+- order_status
+- quantity
+- product_id
+- user_id
+
+- Index [token required] (GET `/api/orders`)
+- Show [token required] (GET `/api/orders/:id`)
+- Create [token required] (POST `/api/orders`)
+- Update [token required] (PUT `/api/orders/:id`)
+- Delete [token required] (DELETE `/api/orders/:id`)
+- add product to order (POST `orders/add`)
+
+CREATE TABLE orders
+    (id serial primary key,
+                       order_status varchar(20) not null,
+                                                quantity integer not null,
+                                                                 "user_id" integer DEFAULT NULL,
+                                                                                           "product_id" integer DEFAULT NULL,
+     FOREIGN KEY ("user_id") REFERENCES users("id") on delete cascade on update cascade,
+     FOREIGN KEY ("product_id") REFERENCES products("pid") on delete cascade on update cascade);
+
+#### ordersProducts
+
+- id
+- product_id
+- order_id
+- quantity
+
+CREATE TABLE ordersProducts
+    (id serial primary key,
+                       quantity integer not null,
+                                        "order_id" integer DEFAULT NULL,
+                                                                   "product_id" integer DEFAULT NULL,
+     FOREIGN KEY ("order_id") REFERENCES orders("id") on delete cascade on update cascade,
+     FOREIGN KEY ("product_id") REFERENCES products("pid") on delete cascade on update cascade);
+

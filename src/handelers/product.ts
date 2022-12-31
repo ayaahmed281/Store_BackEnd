@@ -8,7 +8,7 @@ const router: Router = express.Router()
 
 const store = new Products()
 
-router.get("/products", async (_req: Request, res: Response) => {
+router.get("/productsList", async (_req: Request, res: Response) => {
   try {
     const products = await store.index()
     res.json(products)
@@ -17,7 +17,7 @@ router.get("/products", async (_req: Request, res: Response) => {
   }
 })
 
-router.get("/products/:id", async (_req: Request, res: Response) => {
+router.get("/productsList/:id", async (_req: Request, res: Response) => {
   try {
     const Product = await store.show(parseInt(_req.params.id, 1))
     res.json(Product)
@@ -26,8 +26,9 @@ router.get("/products/:id", async (_req: Request, res: Response) => {
   }
 })
 
-router.post("/products", authToken, async (req: Request, res: Response) => {
+router.post("/productsList", async (req: Request, res: Response) => {
   try {
+    console.log(req.body)
     const Product: Product = {
       price: req.body.price,
       pName: req.body.name,
@@ -49,7 +50,7 @@ router.post("/products", authToken, async (req: Request, res: Response) => {
   }
 })
 
-router.put("/products/:id", authToken, async (req: Request, res: Response) => {
+router.put("/productsList/:id", authToken, async (req: Request, res: Response) => {
   try {
     const Product: Product = {
       category: req.body.category,
@@ -68,7 +69,7 @@ router.put("/products/:id", authToken, async (req: Request, res: Response) => {
   }
 })
 
-router.delete("/products/:pid", authToken, async (_req: Request, res: Response) => {
+router.delete("/productsList/:pid", authToken, async (_req: Request, res: Response) => {
   try {
     await store.delete(parseInt(_req.params.pid, 1)).then(() => {
       res.json({

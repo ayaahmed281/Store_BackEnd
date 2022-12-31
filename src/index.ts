@@ -13,7 +13,6 @@ app.listen("54242", () => {
 
 app.use(bodyParser.json())
 app.get("/", function (req, res) {
-  // BookStore.index();
   res.send("hello world")
 })
 app.use("/api", product)

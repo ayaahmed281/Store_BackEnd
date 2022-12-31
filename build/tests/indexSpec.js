@@ -13,22 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
-const fs_1 = __importDefault(require("fs"));
 const index_1 = __importDefault(require("../index"));
 const request = (0, supertest_1.default)(index_1.default);
 describe("Test endpoint responses", () => {
-    const projectPath = process.cwd();
     it("gets the api endpoint", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/resizing?name=d.jpg&width=1100&height=700");
+        const response = yield request.get("/");
         expect(response.status).toBe(200);
     }));
-    it("should resize image if get correct data from the user and add it to the right folder ", () => __awaiter(void 0, void 0, void 0, function* () {
-        yield request.get("/resizing?name=d.jpg&width=110&height=700");
-        const resizedImagePath = projectPath + `/src/resized/110_700_d.jpg`;
-        expect(fs_1.default.existsSync(resizedImagePath.toString())).toBeTruthy();
-    }));
-    it("should throw error if get not valid data from the user", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get("/resizing?name=dsss.jpg");
-        expect(response.body.error).toBe("check ur data in the url");
-    }));
 });
+//# sourceMappingURL=indexSpec.js.map
