@@ -38,8 +38,8 @@ describe("User handler: ", () => {
       {
         id: 4,
         email: "a@a.com",
-        firstname: "aya",
-        lastname: "Ahmed"
+        firstName: "aya",
+        lastName: "Ahmed"
       }
     ]
     request
