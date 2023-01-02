@@ -59,11 +59,16 @@ To run the app in dev mode execute `yarn start`.
 database is 5434
 server is 54242
 ## env variables
- host: "localhost",
-  port: 5434,
-  database: "dev",
-  user: "postgres",
-  password: "aya"
+POSTGRES_PORT=5434
+DEV_POSTGRES_DB=dev
+TEST_POSTGRES_DB=devtest
+POSTGRES_PASSWORD=aya
+POSTGRES_USERNAME=postgres
+POSTGRES_HOST=localhost
+BCRYPT_PASSWORD=my_password
+SALT_ROUNDS=10
+ENV=dev
+TOKEN_SECRET=secret
 # Package installation instructions.
 npm i
 # Database schema with column name and type.
