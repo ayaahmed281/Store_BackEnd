@@ -58,15 +58,18 @@ To run the app in dev mode execute `yarn start`.
 ## port number
 database is 5434
 server is 54242
+
 ## env variables
 POSTGRES_PORT=5434
 DEV_POSTGRES_DB=dev
+# DB VARIABLES
 TEST_POSTGRES_DB=devtest
 POSTGRES_PASSWORD=aya
 POSTGRES_USERNAME=postgres
 POSTGRES_HOST=localhost
 BCRYPT_PASSWORD=my_password
 SALT_ROUNDS=10
+POSTGRES_PORT=5434
 ENV=dev
 TOKEN_SECRET=secret
 # Package installation instructions.
