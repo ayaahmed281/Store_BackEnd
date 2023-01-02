@@ -73,8 +73,6 @@ SALT_ROUNDS=10
 POSTGRES_PORT=5434
 ENV=dev
 TOKEN_SECRET=secret
-# Package installation instructions.
-npm i
 # Database schema with column name and type.
 ## API Endpoints
 #### Users
