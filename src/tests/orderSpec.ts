@@ -4,29 +4,29 @@ import {Order} from "../types"
 const store = new Orders()
 
 describe("Order Model", () => {
-  it("create method should add a order", async () => {
+  it("should add a order", async () => {
     const result = await store.create({
       order_status: "pending",
-      quantity: 8,
-      user_id: 4,
-      product_id: 7
+      quantity: 1,
+      user_id: 1,
+      product_id: 1
     })
 
     expect(result).toEqual({
       order_status: "pending",
-      quantity: 8,
-      user_id: 4,
-      product_id: 7
+      quantity: 1,
+      user_id: 1,
+      product_id: 1
     })
   })
 
-  it("create method should add a order", async () => {
+  it("should add a order", async () => {
     const result = await store.update(
       {
         order_status: "processing",
         quantity: 8,
         user_id: 4,
-        product_id: 7
+        product_id: 1
       },
       1
     )
@@ -35,7 +35,7 @@ describe("Order Model", () => {
       order_status: "processing",
       quantity: 8,
       user_id: 4,
-      product_id: 7
+      product_id: 1
     })
   })
 

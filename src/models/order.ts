@@ -28,18 +28,24 @@ export class Orders {
   async create(orderData: Order): Promise<Order | Error> {
     try {
       const conn = await Client.connect()
+      console.log("aaaaaa11")
       const sql =
         "INSERT INTO orders (order_status, quantity, product_id, user_id) VALUES($1, $2, $3, $4) RETURNING *"
+      console.log(orderData)
+
       const result = await conn.query(sql, [
         orderData.order_status,
         orderData.quantity,
         orderData.product_id,
         orderData.user_id
       ])
+      console.log(result)
+
       const order = result.rows[0]
       conn.release()
       return order
     } catch (err) {
+      console.log(err)
       return new Error(`there is an error: ${err}`)
     }
   }

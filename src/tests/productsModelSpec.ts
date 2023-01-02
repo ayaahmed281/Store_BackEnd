@@ -5,7 +5,7 @@ const store = new Products()
 
 describe("product Model", () => {
   const productAya: Product = {
-    pid: 1,
+    pid: 7,
     pName: "jaket",
     category: "clothes",
     price: 20

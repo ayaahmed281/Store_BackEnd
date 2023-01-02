@@ -10,7 +10,7 @@
     "test": {
       "driver": "pg",
       "host": "localhost",
-      "database": "test",
+      "database": "devtest",
       "user": "postgres",
       "password": "aya",
       "port":5434

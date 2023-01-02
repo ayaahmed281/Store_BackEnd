@@ -29,7 +29,8 @@ export class Products {
   async create(product: Product): Promise<Product | Error> {
     try {
       const conn = await Client.connect()
-      const sql = "INSERT INTO products (p_name, price, category) VALUES($1, $2, $3) RETURNING *"
+      const sql = "INSERT INTO products (pName, price, category) VALUES($1, $2, $3) RETURNING *"
+
       const result = await conn.query(sql, [product.pName, product.price, product.category])
       const products = result.rows[0]
       conn.release()
@@ -42,7 +43,7 @@ export class Products {
   async update(product: Product, pid: number): Promise<Product | Error> {
     try {
       const conn = await Client.connect()
-      const sql = `UPDATE products SET pName = $1, price = $2, category = $3 WHERE pid = ${pid} RETURNING pid, p_name, price, category`
+      const sql = `UPDATE products SET pName = $1, price = $2, category = $3 WHERE pid = ${pid} RETURNING pid, pName, price, category`
       const result = await conn.query(sql, [product?.pName, product?.price, product?.category])
       const products = result.rows[0]
       conn.release()
