@@ -51,9 +51,11 @@ To install the app's dependencies and use the app in dev mode, run the following
 
 1) To run the app in dev mode execute `npm i `.
 
-`npm create-db-dev`
-
-`npm create-db-dev` runs a script that uses db-migrate to create a new database called `storefront` and runs the migrations to create the tables `db-migrate up`. This script assumes you have installed `postgres` on your local system and the server is running.
+via psql
+Create database devlast ;
+Create database devtest;
+-------------------------------
+ db-migrate up ; 
 
 To run the app in dev mode execute `npm start`.
 ## port number
