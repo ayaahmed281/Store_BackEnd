@@ -1,0 +1,43 @@
+import {Users} from "../models/user"
+import {User} from "../types"
+
+const store = new Users()
+
+describe("User Model", () => {
+  const userAya: User = {
+    firstName: "aya",
+    email: "aya@aya.com",
+    lastName: "ahmed",
+    password: "123",
+    id: 1
+  }
+
+  async function createUser(userAya: User) {
+    return store.create(userAya)
+  }
+
+  async function deleteUser(id: number) {
+    return store.delete(id)
+  }
+
+  it("should have an index method", () => {
+    expect(store.index).toBeDefined()
+  })
+
+  it("should have a create method", () => {
+    expect(store.create).toBeDefined()
+  })
+
+  it("should have a remove method", () => {
+    expect(store.delete).toBeDefined()
+  })
+
+  it("index method should return a list of userAyas", async () => {
+    const createdUser: any = await createUser(userAya)
+    const userAyaList = await store.index()
+    console.log(userAyaList)
+    expect(userAyaList).toEqual([createdUser])
+
+    await deleteUser(createdUser.id)
+  })
+})
