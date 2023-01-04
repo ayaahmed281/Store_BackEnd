@@ -13,6 +13,16 @@ const {
   ENV
 } = process.env
 console.log("lllllllllllllllllll", ENV)
+console.log(
+  POSTGRES_HOST,
+  POSTGRES_USERNAME,
+  DEV_POSTGRES_DB,
+  TEST_POSTGRES_TEST_DB,
+  POSTGRES_PASSWORD,
+  POSTGRES_PORT,
+  ENV
+)
+
 const client = new Pool({
   host: POSTGRES_HOST,
   port: parseInt(POSTGRES_PORT as string, 10),
