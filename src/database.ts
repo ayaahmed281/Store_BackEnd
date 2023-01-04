@@ -12,7 +12,6 @@ const {
   POSTGRES_PORT,
   ENV
 } = process.env
-console.log("lllllllllllllllllll", ENV)
 console.log(
   POSTGRES_HOST,
   POSTGRES_USERNAME,
