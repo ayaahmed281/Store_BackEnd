@@ -2,7 +2,7 @@
     "dev": {
       "driver": "pg",
       "host": "localhost",
-      "database": "dev",
+      "database": "devlast",
       "user": "postgres",
       "password": "aya",
       "port":5434

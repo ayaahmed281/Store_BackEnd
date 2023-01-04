@@ -49,7 +49,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 To install the app's dependencies and use the app in dev mode, run the following:
 
-To run the app in dev mode execute `npm i `.
+1) To run the app in dev mode execute `npm i `.
 
 `npm create-db-dev`
 
@@ -62,17 +62,16 @@ server is 54242
 
 ## env variables
 POSTGRES_PORT=5434
-DEV_POSTGRES_DB=dev
-# DB VARIABLES
-TEST_POSTGRES_DB=devtest
+DEV_POSTGRES_DB=devlast
+TEST_POSTGRES_TEST_DB=devtest
 POSTGRES_PASSWORD=aya
 POSTGRES_USERNAME=postgres
 POSTGRES_HOST=localhost
 BCRYPT_PASSWORD=my_password
 SALT_ROUNDS=10
-POSTGRES_PORT=5434
 ENV=dev
 TOKEN_SECRET=secret
+
 # Database schema with column name and type.
 ## API Endpoints
 #### Users
@@ -110,7 +109,7 @@ CREATE TABLE users (id SERIAL PRIMARY KEY,
 - Update [token required] (PUT `/api/productsList/:id`)
 - Delete [token required] (DELETE `/api/productsList/:id`)
 
-CREATE TABLE products (PID SERIAL PRIMARY KEY,
+CREATE TABLE products ( SERIAL PRIMARY KEY,
                                           pName VARCHAR(20) not null,
                                                             price integer not null,
                                                                           category VARCHAR(20));

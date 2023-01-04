@@ -1,2 +1,3 @@
 /* Replace with your SQL commands */
-DROP TABLE ordersProducts;
+DROP TABLE if exists products cascade;
+
