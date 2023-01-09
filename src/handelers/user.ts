@@ -8,7 +8,7 @@ const router: Router = express.Router()
 
 const store = new Users()
 
-router.get("/users", authToken, async (_req: Request, res: Response) => {
+router.get("/users", async (_req: Request, res: Response) => {
   try {
     const users = await store.index()
     res.json(users)

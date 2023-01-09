@@ -62,6 +62,7 @@ export class Products {
       conn.release()
       return product
     } catch (err) {
+      console.log(err)
       return new Error(`there is an error  ${pid}. in : ${err}`)
     }
   }

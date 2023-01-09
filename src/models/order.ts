@@ -28,10 +28,8 @@ export class Orders {
   async create(orderData: Order): Promise<Order | Error> {
     try {
       const conn = await Client.connect()
-      console.log("aaaaaa11")
       const sql =
         "INSERT INTO orders (order_status, quantity, product_id, user_id) VALUES($1, $2, $3, $4) RETURNING *"
-      console.log(orderData)
 
       const result = await conn.query(sql, [
         orderData.order_status,
@@ -52,7 +50,7 @@ export class Orders {
 
   async update(order: Order, id: number): Promise<Order | Error> {
     try {
-      const sql = `UPDATE orders SET order_status = $1, quantity = $2, product_id = $3, user_id= $4 WHERE id = ${id} RETURNING pid, p_name, price, category`
+      const sql = `UPDATE orders SET order_status = $1, quantity = $2, product_id = $3, user_id= $4 WHERE id = ${id} RETURNING *`
       const conn = await Client.connect()
       const result = await conn.query(sql, [
         order.order_status,
@@ -60,10 +58,13 @@ export class Orders {
         order.product_id,
         order.user_id
       ])
+      console.log("rrrrrrrrrrrrrr", result)
       const orders = result.rows[0]
       conn.release()
       return orders
     } catch (err) {
+      console.log("rrrrrrrrrrrrrr", err)
+
       return new Error(`there is an error in  ${order.id}. Error: ${err}`)
     }
   }

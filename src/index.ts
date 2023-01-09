@@ -7,7 +7,7 @@ import user from "./handelers/user"
 
 const app: Application = express()
 
-app.listen("54242", () => {
+app.listen("54246", () => {
   console.log(`Server is starting at prot:${54242}`)
 })
 
